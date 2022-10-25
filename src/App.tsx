@@ -9,13 +9,17 @@ export default () => {
   const [visible, setVisible] = useState(false)
   const [initProps, setInitProps] = useState({})
 
-  const edit = (record: any) => {
-    setInitProps(record)
-    setVisible(true)
-  }
   const handleOk = () => {
     console.log('okkkkk')
     setVisible(false)
+  }
+  const edit = (record?: any) => {
+    // setInitProps(record || {})
+    // setVisible(true)
+    // openModal(EditModal, {
+    //   initProps: record,
+    //   onOk: handleOk,
+    // })
   }
   const columns = [
     {
@@ -47,16 +51,17 @@ export default () => {
     },
     {
       name: 'ls',
-      email: 'laksdjf',
+      email: 'laksdj2f',
       phone: '121212',
     },
   ]
   return (
     <div className='w-full'>
-      ``
-      <Button type='primary'>新增</Button>
+      <Button type='primary' onClick={() => edit()}>
+        新增
+      </Button>
       <Table columns={columns} dataSource={data} rowKey='email' scroll={{ y: 400 }} />
-      <EditModal visible={visible} initProps={initProps} onOk={handleOk} />
+      {/* <EditModal open={visible} initProps={initProps} onOk={handleOk} /> */}
     </div>
   )
 }
