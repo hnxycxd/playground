@@ -1,25 +1,27 @@
-import React, { useState } from 'react'
-import { Button, Table } from 'antd'
+import React, { lazy, useState, Suspense } from 'react'
+import { Button, Table, Modal } from 'antd'
 import { useAntdTable } from 'ahooks'
 // import 'antd/es/upload/style/index.less'
 // import 'antd/es/button/style/index.less'
-import EditModal from './editModal'
+// import EditModal from './editModal'
+import { openModal } from './utils'
+
+const EditModal = lazy(() => import('./editModal'))
+
+interface CustomModalProps {
+  initProps: any
+}
 
 export default () => {
-  const [visible, setVisible] = useState(false)
-  const [initProps, setInitProps] = useState({})
-
+  const [open, setOpen] = useState(false)
   const handleOk = () => {
-    console.log('okkkkk')
-    setVisible(false)
+    setOpen(false)
   }
   const edit = (record?: any) => {
-    // setInitProps(record || {})
-    // setVisible(true)
-    // openModal(EditModal, {
-    //   initProps: record,
-    //   onOk: handleOk,
-    // })
+    openModal(EditModal, {
+      initProps: record || {},
+      onOk: handleOk,
+    })
   }
   const columns = [
     {
@@ -57,11 +59,13 @@ export default () => {
   ]
   return (
     <div className='w-full'>
-      <Button type='primary' onClick={() => edit()}>
+      <Suspense fallback='loading...'>
+        <EditModal open={open} onOk={handleOk} onCancel={() => setOpen(false)} initProps={{}} />
+      </Suspense>
+      <Button type='primary' onClick={() => setOpen(true)}>
         新增
       </Button>
       <Table columns={columns} dataSource={data} rowKey='email' scroll={{ y: 400 }} />
-      {/* <EditModal open={visible} initProps={initProps} onOk={handleOk} /> */}
     </div>
   )
 }

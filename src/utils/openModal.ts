@@ -1,1 +1,0 @@
-const openModal = (ModalCompoent) => {}
