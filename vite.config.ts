@@ -1,3 +1,4 @@
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 // import { AntdResolve, createStyleImportPlugin } from 'vite-plugin-style-import'
@@ -10,6 +11,11 @@ export default defineConfig({
       less: {
         javascriptEnabled: true,
       },
+    },
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
     },
   },
   plugins: [
@@ -26,10 +32,10 @@ export default defineConfig({
           style(name) {
             // use less
             return `antd/es/${name}/style/index.js`
-          }
+          },
         },
-      ]
-    })
+      ],
+    }),
     // createStyleImportPlugin({
     //   resolves: [AntdResolve()],
     //   // libs: [
