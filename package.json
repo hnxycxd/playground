@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "play": "pnpm -C play dev",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },

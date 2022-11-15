@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react"
 
 const List = () => {
-  return <div>list</div>
+  return (
+    <div>
+      <div>list</div>
+      <a href="#">aaa</a>
+    </div>
+  )
 }
 
 export default List
