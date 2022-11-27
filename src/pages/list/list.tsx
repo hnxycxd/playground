@@ -1,11 +1,40 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { Form, Button, Table, Input } from "antd"
 
 const List = () => {
+  const [form] = Form.useForm()
+
+  const onFinish = () => {
+    const values = form.getFieldsValue()
+    console.log("values", values)
+  }
+  useEffect(() => {
+    fetch("http://localhost:8090/demo/get")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log("res", res)
+      })
+  })
+
+  console.log("rp", "{[]}".replaceAll(""))
   return (
-    <div>
-      <div>list</div>
-      <a href="#">aaa</a>
-    </div>
+    <>
+      <Form form={form} onFinish={onFinish}>
+        <Form.Item label="姓名" name="name">
+          <Input />
+        </Form.Item>
+        <Form.Item label="年龄" name="age">
+          <Input />
+        </Form.Item>
+        <Form.Item label="姓名" name="name">
+          <Button htmlType="submit">搜索</Button>
+        </Form.Item>
+      </Form>
+      {/* <Table data={data} pagination={{ page: page }}></Table> */}
+      <input type="radio" name="gp1" id="" />A
+      <input type="radio" name="gp1" id="" />B
+      <input type="radio" name="gp1" id="" />C
+    </>
   )
 }
 
