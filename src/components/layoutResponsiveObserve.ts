@@ -5,13 +5,13 @@ let layout: any = undefined
 
 const layoutResponsiveObserve = {
   // 触发订阅事件
-  dispatch(currentSize) {
+  dispatch(currentSize: { width?: any; height?: any }) {
     size = currentSize
     subscribes.forEach((func) => func(size))
     return subscribes.size > 0
   },
   // 订阅事件
-  subscribe(func) {
+  subscribe(func: { (size: any): void; (arg0: {}): void }) {
     // 如果监听事件还没有注册，则注册监听事件
     if (!subscribes.size) {
       this.register()
@@ -21,7 +21,7 @@ const layoutResponsiveObserve = {
     func(size)
     return subId
   },
-  unSubscribe(id) {
+  unSubscribe(id: number) {
     subscribes.delete(id)
     if (!subscribes.size) {
       this.unRegister()

@@ -1,8 +1,8 @@
-import { resolve } from 'node:path'
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { resolve } from "node:path"
+import { defineConfig } from "vite"
+import react from "@vitejs/plugin-react"
 // import { AntdResolve, createStyleImportPlugin } from 'vite-plugin-style-import'
-import vitePluginImp from 'vite-plugin-imp'
+import vitePluginImp from "vite-plugin-imp"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,7 +15,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      "@": resolve(__dirname, "src"),
     },
   },
   plugins: [
@@ -28,7 +28,7 @@ export default defineConfig({
         //   camel2DashComponentName: false
         // },
         {
-          libName: 'antd',
+          libName: "antd",
           style(name) {
             // use less
             return `antd/es/${name}/style/index.js`
@@ -47,4 +47,7 @@ export default defineConfig({
     //   // ]
     // }),
   ],
+  build: {
+    rollupOptions: {},
+  },
 })

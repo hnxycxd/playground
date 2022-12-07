@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { Form, Button, Table, Input } from "antd"
+import { getstrbyte } from "rookie-utils"
 
 const List = () => {
   const [form] = Form.useForm()
@@ -9,14 +10,13 @@ const List = () => {
     console.log("values", values)
   }
   useEffect(() => {
-    fetch("http://localhost:8090/demo/get")
-      .then((res) => res.json())
-      .then((res) => {
-        console.log("res", res)
-      })
+    // fetch("http://localhost:8090/demo/get")
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log("res", res)
+    //   })
   })
-
-  console.log("rp", "{[]}".replaceAll(""))
+  console.log("rookieUtils", getstrbyte("abcde"))
   return (
     <>
       <Form form={form} onFinish={onFinish}>
