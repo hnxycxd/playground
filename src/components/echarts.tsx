@@ -23,6 +23,9 @@ echarts.use([
   BarChart,
   CanvasRenderer,
 ])
+echarts.registerTheme("themeA", {
+  backgroundColor: "skyblue",
+})
 
 export type ECOption = echarts.ComposeOption<
   | BarSeriesOption

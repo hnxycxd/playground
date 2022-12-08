@@ -49,12 +49,13 @@ const Home: React.FC = () => {
       <div className=" mb-2 w-1/4 p-4 shadow-md">
         <Button onClick={() => linkTo("/")}>/</Button>
         <Button onClick={() => linkTo("/list")}>/list</Button>
+        <Button onClick={() => linkTo("/ice")}>/ice</Button>
       </div>
 
       <Button onClick={handleTheme}>toggle theme</Button>
       <p className=" text-black dark:text-white">以下是一段文本内容</p>
 
-      <Echarts option={option} style={{ width: 800 }} />
+      <Echarts theme="dark" option={option} style={{ width: 800 }} />
     </div>
   )
 }

@@ -1,15 +1,20 @@
-import { BrowserRouter, useRoutes } from 'react-router-dom'
-import Home from '@/pages/home/home'
-import List from '@/pages/list/list'
+import { BrowserRouter, useRoutes } from "react-router-dom"
+import Home from "@/pages/home/home"
+import List from "@/pages/list/list"
+import Ice from "@/pages/ice/ice"
 
 const routeConfig = [
   {
-    path: '/',
+    path: "/",
     element: <Home />,
   },
   {
-    path: '/list',
+    path: "/list",
     element: <List />,
+  },
+  {
+    path: "/ice",
+    element: <Ice />,
   },
 ]
 
