@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { Form, Button, Table, Input } from "antd"
-import { getstrbyte } from "rookie-utils"
+// import { getstrbyte } from "rookie-utils"
 
 const List = () => {
   const [form] = Form.useForm()
@@ -16,7 +16,7 @@ const List = () => {
     //     console.log("res", res)
     //   })
   })
-  console.log("rookieUtils", getstrbyte("abcde"))
+  // console.log("rookieUtils", getstrbyte("abcde"))
   return (
     <>
       <Form form={form} onFinish={onFinish}>

@@ -1,11 +1,11 @@
-import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App"
-import "./index.css"
+import { Ctx } from "./utils"
 import "uno.css"
+// import "antd/lib/style"
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
+  <Ctx.Provider value={{ name: "zs" }}>
     <App />
-  </React.StrictMode>
+  </Ctx.Provider>
 )

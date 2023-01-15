@@ -20,7 +20,7 @@ const routeConfig = [
 
 const Index = () => {
   const element = useRoutes(routeConfig)
-  return <div>{element}</div>
+  return <>{element}</>
 }
 
 export default function () {

@@ -1,19 +1,19 @@
-import { createStore } from "@ice/store"
+// import { createStore } from "@ice/store"
 
-const themeStore = {
-  state: 0,
-  reducers: {
-    updateTheme(theme: any, newState: any) {
-      console.log("render")
-      return newState
-    },
-  },
-}
+// const themeStore = {
+//   state: 0,
+//   reducers: {
+//     updateTheme(theme: any, newState: any) {
+//       console.log("render")
+//       return newState
+//     },
+//   },
+// }
 
-const models = {
-  themeStore,
-}
+// const models = {
+//   themeStore,
+// }
 
-const store = createStore(models)
+// const store = createStore(models)
 
-export default store
+// export default store

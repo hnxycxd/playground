@@ -3,6 +3,7 @@ import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
 // import { AntdResolve, createStyleImportPlugin } from 'vite-plugin-style-import'
 import vitePluginImp from "vite-plugin-imp"
+import analyzer from "rollup-plugin-analyzer"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,36 +19,26 @@ export default defineConfig({
       "@": resolve(__dirname, "src"),
     },
   },
-  plugins: [
-    react(),
-    vitePluginImp({
-      libList: [
-        // {
-        //   libName: 'lodash',
-        //   libDirectory: '',
-        //   camel2DashComponentName: false
-        // },
-        {
-          libName: "antd",
-          style(name) {
-            // use less
-            return `antd/es/${name}/style/index.js`
-          },
-        },
-      ],
-    }),
-    // createStyleImportPlugin({
-    //   resolves: [AntdResolve()],
-    //   // libs: [
-    //   //   {
-    //   //     libraryName: 'antd',
-    //   //     esModule: true,
-    //   //     resolveStyle: (name) => `antd/es/${name}/style/index`
-    //   //   }
-    //   // ]
-    // }),
-  ],
+  optimizeDeps: {
+    include: ["react", "react-dom", "react-router-dom", "lodash-es"],
+  },
+  plugins: [react(), vitePluginImp()],
   build: {
-    rollupOptions: {},
+    rollupOptions: {
+      output: {
+        // manualChunks: (id) => {
+        //   if (id.includes("node_modules")) {
+        //     return id
+        //       .toString()
+        //       .split("node_modules/")[1]
+        //       .split("/")[0]
+        //       .toString()
+        //   }
+        // },
+        // chunkFileNames: "js/[name].[hash].js",
+        // assetFileNames: "[ext]/[name].[hash].[ext]",
+      },
+      plugins: [analyzer()],
+    },
   },
 })
