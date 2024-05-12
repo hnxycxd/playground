@@ -1,4 +1,5 @@
-import React, { ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import React from 'react'
 
 type IFruit = 'apple' | 'banana' | 'orange'
 
@@ -11,7 +12,7 @@ const comp: Record<IFruit, ReactNode> = {
   banana: <Banana />,
   orange: <Orange />,
 }
-const Fruit = ({ fruit }: { fruit: IFruit }) => {
+function Fruit({ fruit }: { fruit: IFruit }) {
   return <div>{comp[fruit]}</div>
 }
 
