@@ -1,19 +1,10 @@
-import ReactDOM from "react-dom/client"
-// import App from './App'
-import RootRoute from "@/route"
+import { createRoot } from 'react-dom/client'
+import RootRoute from '@/route'
 // import store from "./store"
-import "./index.css"
+import './index.css'
 
 // const { Provider } = store
 
-function App() {
-  return (
-    <RootRoute />
-    // <Provider>
-    // </Provider>
-  )
-}
+const rootElement = document.getElementById('app')
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <App />
-)
+if (rootElement) createRoot(rootElement).render(<RootRoute />)

@@ -1,28 +1,34 @@
-import { BrowserRouter, useRoutes } from "react-router-dom"
-import Home from "@/pages/home/home"
-import List from "@/pages/list/list"
-import Ice from "@/pages/ice/ice"
+import * as React from 'react'
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Home from '@/pages/home/home'
+import ListSub1 from '@/pages/list/sub1'
+import ListSub2 from '@/pages/list/sub2'
+import List from '@/pages/list/list'
 
-const routeConfig = [
+const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "/list",
+    path: '/list',
     element: <List />,
+    children: [
+      {
+        index: true,
+        element: <Navigate to='/list/sub1' replace />,
+      },
+      {
+        path: 'sub1',
+        element: <ListSub1 />,
+      },
+      {
+        path: 'sub2',
+        element: <ListSub2 />,
+      },
+    ],
   },
-  {
-    path: "/ice",
-    element: <Ice />,
-  },
-]
+  { path: '*', element: <div>404 :(</div> },
+])
 
-const Index = () => {
-  const element = useRoutes(routeConfig)
-  return <>{element}</>
-}
-
-export default function () {
-  return <BrowserRouter>{<Index />}</BrowserRouter>
-}
+export default () => <RouterProvider router={router} />
