@@ -22,8 +22,8 @@ const Home: React.FC = () => {
       <Space className='mb-2 w-1/4 p-4 shadow-md'>
         <Button onClick={() => navigate('/')}>/</Button>
         <Button onClick={() => navigate('/list')}>/list</Button>
-        <Button onClick={() => navigate('/list/sub1')}>/sub1</Button>
-        <Button onClick={() => navigate('/list/sub2')}>/sub2</Button>
+        <Button onClick={() => navigate('/list/sub1')}>/list/sub1</Button>
+        <Button onClick={() => navigate('/list/sub2')}>/list/sub2</Button>
       </Space>
 
       <Button onClick={handleTheme}>toggle theme</Button>

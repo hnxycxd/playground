@@ -1,8 +1,8 @@
 {
   "name": "play",
-  "private": true,
-  "version": "0.0.1",
   "type": "module",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,9 +10,7 @@
   },
   "dependencies": {
     "@iconify-json/carbon": "^1.1.9",
-    "@types/react-router": "^5.1.19",
-    "antd": "^5.4.7",
-    "sass": "^1.56.1",
-    "unocss": "^0.46.5"
+    "antd": "4",
+    "unocss": "^0.60.2"
   }
 }

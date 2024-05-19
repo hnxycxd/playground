@@ -1,17 +1,14 @@
-import React, { useImperativeHandle } from "react"
+import React from 'react'
 
 // const Comp = React.forwardRef(
 //   )
-interface IProp {
-  age: number
-}
-const Com = (props: IProp, ref: React.Ref<any>) => {
-  useImperativeHandle(ref, () => ({
-    getData: () => {
-      console.log("getData2222")
-    },
-  }))
+
+function Com() {
+  // useImperativeHandle(ref, () => ({
+  //   getData: () => {},
+  // }))
   return <div>comp</div>
 }
 
-export default React.forwardRef(Com)
+// export default React.forwardRef(Com)
+export default Com
