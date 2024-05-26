@@ -1,34 +1,42 @@
-import * as React from 'react'
-import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Home from '@/pages/home/home'
-import ListSub1 from '@/pages/list/sub1'
-import ListSub2 from '@/pages/list/sub2'
-import List from '@/pages/list/list'
+import * as React from "react";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
+import Home from "@/pages/home/home";
+import ListSub1 from "@/pages/list/sub1";
+import ListSub2 from "@/pages/list/sub2";
+import List from "@/pages/list/list";
+import TimeLine from "@/pages/timeline";
 
-const router = createBrowserRouter([
+export const routes = [
   {
-    path: '/',
+    path: "/",
     element: <Home />,
   },
   {
-    path: '/list',
+    path: "/list",
     element: <List />,
     children: [
       {
         index: true,
-        element: <Navigate to='/list/sub1' replace />,
+        element: <Navigate to="/list/sub1" replace />,
       },
       {
-        path: 'sub1',
+        path: "sub1",
         element: <ListSub1 />,
       },
       {
-        path: 'sub2',
+        path: "sub2",
         element: <ListSub2 />,
       },
     ],
   },
-  { path: '*', element: <div>404 :(</div> },
-])
+  { path: "/timeline", element: <TimeLine /> },
+  { path: "*", element: <div>404 :(</div> },
+];
 
-export default () => <RouterProvider router={router} />
+const router = createBrowserRouter(routes);
+
+export default () => <RouterProvider router={router} />;

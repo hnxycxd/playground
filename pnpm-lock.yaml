@@ -38,6 +38,9 @@ importers:
       consola:
         specifier: ^3.2.3
         version: 3.2.3
+      dayjs:
+        specifier: ^1.11.11
+        version: 1.11.11
       echarts:
         specifier: ^5.4.0
         version: 5.5.0

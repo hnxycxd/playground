@@ -55,7 +55,7 @@ body,
 }
 body {
   /* color: unset; */
-  background-color: unset;
+  background-color: #eee;
 }
 
 html.dark {
