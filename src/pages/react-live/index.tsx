@@ -1,12 +1,16 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-import { SimpleLiveProvider as LiveProvider, SimpleLivePreview as LivePreview } from './SimpleLive'
-import { Button } from 'antd'
-import { size } from 'lodash'
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { Button } from "antd";
+import { size } from "lodash-es";
+import {
+  SimpleLivePreview as LivePreview,
+  SimpleLiveProvider as LiveProvider,
+} from "./core";
 
 const appCode = `
 const { useState } = React;
 const { Button } = antd;
+const { size } = lodash;
 
 const App = () => {
   const [count, setCount] = useState(0)
@@ -24,6 +28,15 @@ const App = () => {
       </div>
       <Button 
         type="default" 
+        onClick={() => {
+          console.log(size([1, 2, 3]))
+        }}
+        style={{ marginLeft: '10px' }}
+      >
+        size
+      </Button>
+      <Button 
+        type="default" 
         onClick={() => setCount(0)}
         style={{ marginLeft: '10px' }}
       >
@@ -32,15 +45,14 @@ const App = () => {
     </div>
   )
 }
+`;
+// createRoot(document.getElementById('live-preview-container')).render(<App />)
 
-createRoot(document.getElementById('live-preview-container')).render(<App />)
-`
-
-const CodeLive = () => {
-  const [code, setCode] = React.useState(appCode)
+function CodeLive() {
+  const [code, setCode] = React.useState(appCode);
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: "20px" }}>
       <h2>代码实时编辑器</h2>
       <LiveProvider
         code={code}
@@ -51,36 +63,36 @@ const CodeLive = () => {
           createRoot,
         }}
       >
-        <div style={{ display: 'flex', gap: '20px', height: '500px' }}>
+        <div style={{ display: "flex", gap: "20px", height: "500px" }}>
           <div style={{ flex: 1 }}>
             <h3>代码编辑器</h3>
             <textarea
               value={code}
               onChange={(e) => setCode(e.target.value)}
               style={{
-                width: '100%',
-                height: '400px',
+                width: "100%",
+                height: "400px",
                 fontFamily: 'Monaco, Menlo, "Ubuntu Mono", monospace',
-                fontSize: '14px',
-                padding: '10px',
-                border: '1px solid #ccc',
-                borderRadius: '4px',
-                resize: 'none',
+                fontSize: "14px",
+                padding: "10px",
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                resize: "none",
               }}
-              placeholder='在这里编写代码...'
+              placeholder="在这里编写代码..."
             />
           </div>
           <div style={{ flex: 1 }}>
             <h3>实时预览</h3>
             <div
-              id='live-preview-container'
+              id="live-preview-container"
               style={{
-                border: '1px solid #ccc',
-                padding: '10px',
-                height: '400px',
-                borderRadius: '4px',
-                overflow: 'auto',
-                backgroundColor: '#f9f9f9',
+                border: "1px solid #ccc",
+                padding: "10px",
+                height: "400px",
+                borderRadius: "4px",
+                overflow: "auto",
+                backgroundColor: "#f9f9f9",
               }}
             >
               <LivePreview />
@@ -89,7 +101,7 @@ const CodeLive = () => {
         </div>
       </LiveProvider>
     </div>
-  )
+  );
 }
 
-export default CodeLive
+export default CodeLive;
